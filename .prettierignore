@@ -1,0 +1,57 @@
+# Exclude everything by default
+/**/*
+
+# But don't exclude folders (i.e. only exclude files)
+!/**/*/
+
+# Exclude node_modules folders at every level
+node_modules/
+
+# Include specific file extensions if they appear in a project folder,
+# which is always two levels deep
+*.*
+!*.css
+!*.js
+!*.json
+!*.jsx
+!*.less
+!*.md
+!*.mdx
+!*.ts
+!*.tsx
+!*.yml
+
+# dependencies (bun install)
+node_modules
+
+# output
+out
+dist
+*.tgz
+
+# code coverage
+coverage
+*.lcov
+
+# logs
+logs
+_.log
+report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# caches
+.eslintcache
+.cache
+*.tsbuildinfo
+
+# IntelliJ based IDEs
+.idea
+
+# Finder (MacOS) folder config
+.DS_Store
