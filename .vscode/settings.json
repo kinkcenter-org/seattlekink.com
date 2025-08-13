@@ -1,0 +1,20 @@
+{
+    "cSpell.words": [
+        "Cinnaholic",
+        "Dubh",
+        "HVAC",
+        "kinkcenter",
+        "Leftenant",
+        "Lexi",
+        "Lilithan",
+        "Mellen",
+        "zeffy"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always"
+    },
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
