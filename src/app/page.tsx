@@ -8,9 +8,9 @@ const makeButton = (props: Partial<JSX.IntrinsicElements['a']>) => {
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            {...props}
+            {...rest}
         >
-            {props.children}
+            {children}
         </a>
     )
 }
@@ -19,7 +19,9 @@ export default function Home() {
     return (
         <main className="flex flex-col gap-[32px] row-start-2 items-center place-items-center text-center">
             <p className="text-4xl">Seattle Kink</p>
-            <p>Seattle's kink scene is hard to find and get introduced to.</p>
+            <p>
+                Seattle&apos;s kink scene is hard to find and get introduced to.
+            </p>
             <p>
                 This page tries to solve that by giving you the high level
                 orientation
