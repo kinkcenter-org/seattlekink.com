@@ -37,9 +37,7 @@ export default function RootLayout({
                 </div>
                 <footer className="self-center justify-center text-center pb-5">
                     Disclosure: This webpage is owned by Raven Dubh, President
-                    of KinkCenter.org.
-                    <br />
-                    All are welcome to make suggestions on{' '}
+                    of KinkCenter.org. All are welcome to make suggestions on{' '}
                     <a
                         className="underline hover:underline-offset-4 inline"
                         href="https://github.com/kinkcenter-org/seattlekink.com/discussions"
@@ -48,9 +46,8 @@ export default function RootLayout({
                     >
                         Github
                     </a>
-                    , and Pull Requests to make changes are very welcomed
-                    <br />
-                    You can also{' '}
+                    , and Pull Requests to make changes are very welcomed. You
+                    can also{' '}
                     <a
                         className="underline hover:underline-offset-4 inline"
                         href="https://fetlife.com/conversations/new?with=1678688&source=profile"

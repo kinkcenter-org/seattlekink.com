@@ -27,3 +27,19 @@ body {
 
 @media (prefers-color-scheme: dark) {
 }
+
+header, footer {
+    max-width: min(90%, 800px)
+}
+header {
+    border-bottom: 1px solid var(--foreground);
+    padding-bottom: 10px;
+}
+footer {
+    border-top: 1px solid var(--foreground);
+    padding-top: 10px;
+}
+main {
+    max-width: min(90%, 800px);
+    padding: 10px;
+}
