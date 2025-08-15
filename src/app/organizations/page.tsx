@@ -1,6 +1,5 @@
-import { VenueComponent } from '../venues/page'
-
 import { OrganizationList } from '.'
+import { VenueComponent } from '../venues'
 import '../venues/venue.css'
 
 const Organizations = () => (
