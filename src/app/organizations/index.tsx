@@ -1,10 +1,9 @@
-import { Organization } from './types'
-
-import kinkcenter from '../venues/kinkcenter'
-import subspace from '../venues/subspace'
-import cspc from './cspc'
-export const OrganizationList: Organization[] = [cspc, subspace, kinkcenter]
+import kinkcenter from "../venues/kinkcenter";
+import subspace from "../venues/subspace";
+import cspc from "./cspc";
+import type { Organization } from "./types";
+export const OrganizationList: Organization[] = [cspc, subspace, kinkcenter];
 
 export const makeOrganizationPage = ({ name }: Organization) => {
-    return <p>{name}</p>
-}
+	return <p>{name}</p>;
+};
