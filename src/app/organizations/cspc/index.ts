@@ -1,4 +1,4 @@
-import CSPCLogo from ".logo.webp";
+import CSPCLogo from "./logo.webp";
 import type { Organization } from "../types";
 
 export default {
