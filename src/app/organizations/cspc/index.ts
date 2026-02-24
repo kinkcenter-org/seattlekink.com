@@ -13,6 +13,7 @@ export default {
     "Buy a NMO ticket, show up for orientation at that time, and you can attend the party right afterwards (confirm on their site)",
   ],
   image,
+  imageClassName: "dark:filter-[grayscale(1)_invert(1)]",
   socials: [
     "https://www.instagram.com/the.cspc/",
     "https://www.reddit.com/r/CSPC_Seattle/",

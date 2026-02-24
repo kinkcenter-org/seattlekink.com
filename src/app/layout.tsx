@@ -32,30 +32,20 @@ export default function RootLayout({
             </Link>
           </nav>
         </header>
-        <div className="flex-grow flex flex-col items-center justify-items-center gap-16 font-sans overflow-y-auto">
+        <div className="grow flex flex-col items-center justify-items-center gap-16 font-sans overflow-scroll">
           {children}
         </div>
-        <footer className="self-center justify-center text-center pb-5">
+        <footer className="self-center justify-center text-center pb-1">
           Disclosure: This webpage is owned by Raven Dubh, President of
-          KinkCenter.org. All are welcome to make suggestions on{" "}
+          KinkCenter.org.{" "}
           <a
             className="border-b border-dotted border-foreground/50 hover:border-solid inline"
-            href="https://github.com/kinkcenter-org/seattlekink.com/discussions"
+            href="https://github.com/kinkcenter-org/seattlekink.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Github
+            Support wanted
           </a>
-          , and Pull Requests to make changes are very welcomed. You can also{" "}
-          <a
-            className="border-b border-dotted border-foreground/50 hover:border-solid inline"
-            href="https://fetlife.com/conversations/new?with=1678688&source=profile"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            message @tehraven on FetLife
-          </a>{" "}
-          if you want to
         </footer>
       </body>
     </html>

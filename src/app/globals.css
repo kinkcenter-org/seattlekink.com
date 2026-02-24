@@ -36,7 +36,6 @@ header {
     padding-bottom: 10px;
 }
 footer {
-    border-top: 1px solid var(--foreground);
     padding-top: 10px;
 }
 main {

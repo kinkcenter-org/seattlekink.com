@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, type FC } from "react";
+import { type FC, useEffect, useRef, useState } from "react";
 
 const platformName = (url: string): string => {
   try {
@@ -11,7 +11,7 @@ const platformName = (url: string): string => {
     if (host === "tiktok.com") return "TikTok";
     if (host === "youtube.com") return "YouTube";
     if (host === "bsky.app") return "Bluesky";
-    if (host === "threads.net") return "Threads";
+    if (host === "threads.com") return "Threads";
     if (host === "fetlife.com") return "FetLife";
     if (host === "discord.gg" || host === "discord.com") return "Discord";
     return host;
