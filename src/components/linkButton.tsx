@@ -19,7 +19,7 @@ const LinkButton: FC<LinkButtonProps> = (props) => {
     <a
       className={invert ? invertClasses : defaultClasses}
       target={props.href?.startsWith("/") ? "_self" : "_blank"}
-      rel="noopener noreferrer"
+      rel="noopener"
       {...rest}
     >
       {children}
