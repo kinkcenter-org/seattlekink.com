@@ -12,6 +12,7 @@ const platformName = (url: string): string => {
     if (host === "youtube.com") return "YouTube";
     if (host === "bsky.app") return "Bluesky";
     if (host === "threads.com") return "Threads";
+    if (host === "stt.gg") return "Stoat";
     if (host === "fetlife.com") return "FetLife";
     if (host === "discord.gg" || host === "discord.com") return "Discord";
     return host;

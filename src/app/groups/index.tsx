@@ -1,3 +1,4 @@
+import NEXT from "./NEXT";
 import type { Group } from "./types";
 
 export const GroupList: Group[] = [
@@ -16,4 +17,5 @@ export const GroupList: Group[] = [
     socials: ["https://instagram/@whatever", "https://discord.gg/abcdef123"],
   },
   */
+  NEXT,
 ];
