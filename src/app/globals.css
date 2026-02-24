@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --max-width: min(90%, 1000px);
 }
 
 @theme inline {
@@ -25,20 +27,32 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {}
+
+header,
+main,
+footer {
+  width: var(--max-width);
+  max-width: var(--max-width);
 }
 
-header, footer {
-    max-width: min(90%, 800px)
-}
 header {
-    border-bottom: 1px solid var(--foreground);
-    padding-bottom: 10px;
+  border-bottom: 1px solid var(--foreground);
+  padding-bottom: 10px;
 }
+
+header>nav {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: calc(var(--spacing) * 2)
+}
+
 footer {
-    padding-top: 10px;
+  padding-top: 10px;
 }
+
 main {
-    max-width: min(90%, 1000px);
-    padding: 10px;
+  padding: 10px;
 }

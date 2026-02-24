@@ -1,6 +1,10 @@
+import GitHubIcon from "@mui/icons-material/GitHub";
+import HomeIcon from "@mui/icons-material/Home";
+
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
+
 import "./globals.css";
 
 const fontPoppins = Poppins({
@@ -28,7 +32,16 @@ export default function RootLayout({
         <header className="w-2xl max-w-full place-self-center flex justify-center py-3">
           <nav>
             <Link href="/">
+              <HomeIcon />
+            </Link>
+            <Link href="/" className="grow w-full text-center">
               <p className="text-2xl">SeattleKink.com</p>
+            </Link>
+            <Link
+              href="https://github.com/kinkcenter-org/seattlekink.com"
+              target="_blank"
+            >
+              <GitHubIcon />
             </Link>
           </nav>
         </header>
@@ -42,7 +55,7 @@ export default function RootLayout({
             className="border-b border-dotted border-foreground/50 hover:border-solid inline"
             href="https://github.com/kinkcenter-org/seattlekink.com"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
           >
             Support wanted
           </a>
