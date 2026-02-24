@@ -6,7 +6,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"lint": "biome lint",
-		"format": "biome format --write"
+		"format": "biome format --write",
+    	"deploy": "bun run build && wrangler deploy"
 	},
 	"dependencies": {
 		"next": "16.1.6",
