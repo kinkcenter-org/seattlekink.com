@@ -12,5 +12,6 @@ export default {
     "Pan Eros Foundation was previously known as `Foundation for Sex Positive Culture`. FSPC split into Pan Eros and CSPC organization as it is today",
   ],
   image,
+  socials: ["https://www.instagram.com/paneros_events"],
   website: "https://subspaceseattle.com/",
 } satisfies Venue;

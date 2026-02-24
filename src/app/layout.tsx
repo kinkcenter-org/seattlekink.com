@@ -39,7 +39,7 @@ export default function RootLayout({
           Disclosure: This webpage is owned by Raven Dubh, President of
           KinkCenter.org. All are welcome to make suggestions on{" "}
           <a
-            className="underline hover:underline-offset-4 inline"
+            className="border-b border-dotted border-foreground/50 hover:border-solid inline"
             href="https://github.com/kinkcenter-org/seattlekink.com/discussions"
             target="_blank"
             rel="noopener noreferrer"
@@ -48,7 +48,7 @@ export default function RootLayout({
           </a>
           , and Pull Requests to make changes are very welcomed. You can also{" "}
           <a
-            className="underline hover:underline-offset-4 inline"
+            className="border-b border-dotted border-foreground/50 hover:border-solid inline"
             href="https://fetlife.com/conversations/new?with=1678688&source=profile"
             target="_blank"
             rel="noopener noreferrer"

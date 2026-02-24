@@ -1,5 +1,5 @@
 import type { Organization } from "../types";
-import CSPCLogo from "./logo.webp";
+import image from "./logo.webp";
 
 export default {
   name: "CSPC",
@@ -12,6 +12,10 @@ export default {
     "Most/some of their parties have a New Member Orientation (NMO) before them. These make you a member for one month by default",
     "Buy a NMO ticket, show up for orientation at that time, and you can attend the party right afterwards (confirm on their site)",
   ],
-  image: CSPCLogo,
+  image,
+  socials: [
+    "https://www.instagram.com/the.cspc/",
+    "https://www.reddit.com/r/CSPC_Seattle/",
+  ],
   website: "https://thecspc.org/",
 } satisfies Organization;

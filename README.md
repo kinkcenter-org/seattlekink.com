@@ -1,3 +1,15 @@
+## Intro
+
+This repository is the SeattleKink.com website
+
+It is built using Next, and build to a static /out folder. This folder is deployed using CloudFlare Static Pages for SeattleKink.com -- So /out is literally the homepage, serving /index.html files (etc)
+
+You should read up on Next App Router for how the pages work (/src/app)
+
+Since this repo is statically build and deployed, updates will only occur on the webpage after:
+1. Changes to `main` branches occur
+2. CloudFlare sees this commit and builds the release for us -OR- Raven pushes the changes manually
+
 ## Getting Started
 
 ### Prereqs

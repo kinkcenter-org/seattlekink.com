@@ -10,5 +10,9 @@ export default {
     "SubSpace is mostly rented by entities running events on their own",
   ],
   image,
+  socials: [
+    "https://x.com/SubSpaceNW",
+    "https://www.instagram.com/subspaceseattle/",
+  ],
   website: "https://subspaceseattle.com/",
 } satisfies Venue;

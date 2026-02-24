@@ -1,10 +1,23 @@
 import type { FC, JSX } from "react";
 
-const LinkButton: FC<JSX.IntrinsicElements["a"]> = (props) => {
-  const { children, ...rest } = props;
+const baseClasses =
+  "rounded-full border border-solid transition-colors flex items-center justify-center font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-39.5";
+
+const defaultClasses =
+  baseClasses +
+  " bg-neutral-900 text-white dark:bg-neutral-200 dark:text-black border-transparent hover:opacity-80";
+
+const invertClasses =
+  baseClasses +
+  " bg-neutral-900 dark:bg-neutral-200 text-background hover:opacity-80";
+
+type LinkButtonProps = JSX.IntrinsicElements["a"] & { invert?: boolean };
+
+const LinkButton: FC<LinkButtonProps> = (props) => {
+  const { children, invert, ...rest } = props;
   return (
     <a
-      className="rounded-full border border-solid border-black/8 dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-39.5"
+      className={invert ? invertClasses : defaultClasses}
       target={props.href?.startsWith("/") ? "_self" : "_blank"}
       rel="noopener noreferrer"
       {...rest}

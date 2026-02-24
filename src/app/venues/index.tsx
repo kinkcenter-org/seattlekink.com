@@ -1,5 +1,6 @@
 import Image from "next/image";
 import LinkButton from "@/src/components/linkButton";
+import SocialsButton from "@/src/components/socialsButton";
 import galleryErato from "./gallery-erato";
 import kinkcenter from "./kinkcenter";
 import subspace from "./subspace";
@@ -13,14 +14,15 @@ export const VenueComponent = ({
   image,
   imageClassName,
   website,
+  socials,
 }: Venue) => {
   return (
     <div
       key={name}
-      className="flex flex-col gap-4 items-start text-start rounded-2xl border border-white/10 bg-white/5 p-6 w-full"
+      className="flex flex-col gap-4 items-start text-start rounded-lg border border-gray-300 bg-neutral-200 dark:bg-neutral-900 p-6 w-full hover:shadow-md transition-shadow"
     >
       {image ? (
-        <div className="rounded-xl overflow-hidden -mt-6 -mx-6 mb-0 w-[calc(100%+3rem)] justify-items-center">
+        <div className="rounded-t-lg overflow-hidden -mt-6 -mx-6 mb-0 w-[calc(100%+3rem)] justify-items-center">
           <Image
             src={image}
             alt={name}
@@ -28,8 +30,8 @@ export const VenueComponent = ({
           />
         </div>
       ) : null}
-      <p className="text-xl font-bold">{name}</p>
-      <blockquote className="italic flex flex-col gap-2 opacity-80 pl-4 border-l-2 border-white/20">
+      <p className="text-lg font-bold mb-2">{name}</p>
+      <blockquote className="italic flex flex-col gap-2 opacity-80 pl-4 border-l-2 border-foreground/50">
         {Array.from([description])
           .flat()
           .map((desc, i) => (
@@ -45,9 +47,10 @@ export const VenueComponent = ({
             ))}
         </div>
       ) : null}
-      {website ? (
-        <div className="mt-auto pt-2">
-          <LinkButton href={website}>Website</LinkButton>
+      {website || socials?.length ? (
+        <div className="mt-auto pt-2 flex gap-2 flex-wrap">
+          {website ? <LinkButton href={website}>Website</LinkButton> : null}
+          {socials?.length ? <SocialsButton socials={socials} /> : null}
         </div>
       ) : null}
     </div>

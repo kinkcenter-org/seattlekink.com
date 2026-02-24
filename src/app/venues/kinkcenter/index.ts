@@ -15,5 +15,11 @@ export default {
   ],
   image,
   imageClassName: "dark:invert",
+  socials: [
+    "https://instagram.com/kinkcenter",
+    "https://www.threads.com/@kinkcenter",
+    "https://bsky.app/profile/kinkcenter.org",
+    "https://discord.gg/5HYYjYVNBF",
+  ],
   website: "https://kinkcenter.org/",
 } satisfies Venue;
