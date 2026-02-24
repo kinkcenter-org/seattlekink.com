@@ -40,6 +40,6 @@ footer {
     padding-top: 10px;
 }
 main {
-    max-width: min(90%, 800px);
+    max-width: min(90%, 1000px);
     padding: 10px;
 }
