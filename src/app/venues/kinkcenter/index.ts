@@ -22,4 +22,5 @@ export default {
     "https://discord.gg/5HYYjYVNBF",
   ],
   website: "https://kinkcenter.org/",
+  calendarId: "3cfrm8nsdk41bt09fvkrll5cg4cc6baq@import.calendar.google.com",
 } satisfies Venue;

@@ -19,4 +19,5 @@ export default {
     "https://www.reddit.com/r/CSPC_Seattle/",
   ],
   website: "https://thecspc.org/",
+  calendarId: "gn3dgg37318fhu7o2llldofefk@group.calendar.google.com",
 } satisfies Organization;

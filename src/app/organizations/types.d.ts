@@ -9,4 +9,6 @@ export type Organization = {
   imageClassName?: HTMLAttributes<ImgHTMLAttributes>["className"];
   website?: string;
   socials?: string[];
+  calendarId?: string;
+  ticketTailorFeedUrl?: string;
 };

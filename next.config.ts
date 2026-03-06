@@ -10,6 +10,8 @@ const cspOkList = [
   "https://*.seattlekink.org",
   "https://fonts.googleapis.com",
   "https://fonts.gstatic.com",
+  "https://www.googleapis.com",
+  "https://calendar.apiboomtech.com",
 ];
 const cspHeader = `
   default-src 'self' blob: data: ${cspOkList.join(" ")};
