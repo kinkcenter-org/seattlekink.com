@@ -115,6 +115,10 @@ async function getEventsFromTicketTailor(
 
 // --- Main entry point ---
 
+export function hasCalendarFeed(org: Organization): boolean {
+  return !!(org.calendarId || org.ticketTailorFeedUrl);
+}
+
 export async function getEventsFromOrganization(
   org: Organization,
   googleApiKey?: string,
