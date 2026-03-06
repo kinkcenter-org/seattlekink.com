@@ -8,7 +8,7 @@ export default {
     "We are dedicated to establishing consistent social gatherings in the Greater Seattle Area, offering a variety of themed events to promote inclusivity and community engagement.",
   ],
   comments: [
-    "Sanctum runs play parties almoste very weekend, and multiple socials throughout every week",
+    "Sanctum runs play parties almost every weekend, and multiple socials throughout every week",
   ],
   image,
   socials: [

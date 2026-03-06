@@ -2,7 +2,7 @@ import type { Organization } from "../types";
 import image from "./magpie.png";
 
 export default {
-  name: "Magpipe Kink",
+  name: "Magpie Kink",
   description: [
     "Magpie Kink Education is a kink educators organization in Seattle Washington",
   ],
