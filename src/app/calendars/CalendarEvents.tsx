@@ -51,20 +51,21 @@ function dateKey(date: Date): string {
 // --- Status indicator ---
 
 function StatusIcon({ status }: { status: OrgStatus }) {
+  const base = "inline-flex items-center justify-center w-4 h-4 text-sm leading-none";
   switch (status) {
     case "unsupported":
-      return <span className="text-red-500" title="No supported feed">&#x2717;</span>;
+      return <span className={`${base} text-red-500`} title="No supported feed">&#x2717;</span>;
     case "loading":
       return (
         <span
-          className="inline-block w-3.5 h-3.5 border-2 border-foreground/30 border-t-foreground rounded-full animate-spin"
+          className={`${base} border-2 border-foreground/30 border-t-foreground rounded-full animate-spin`}
           title="Loading"
         />
       );
     case "done":
-      return <span className="text-green-500" title="Loaded">&#x2713;</span>;
+      return <span className={`${base} text-green-500`} title="Loaded">&#x2713;</span>;
     case "error":
-      return <span className="text-red-500" title="Failed to load">&#x2717;</span>;
+      return <span className={`${base} text-red-500`} title="Failed to load">&#x2717;</span>;
   }
 }
 
@@ -86,7 +87,7 @@ function SourceStatusBar({
             <Image
               src={org.image}
               alt={org.name}
-              className={`w-5 h-5 object-contain rounded ${org.imageClassName ?? ""}`}
+              className={`w-4 h-4 object-contain rounded ${org.imageClassName ?? ""}`}
             />
           ) : null}
           <span className="text-foreground/60">{org.name}</span>
