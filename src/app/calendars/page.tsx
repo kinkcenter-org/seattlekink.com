@@ -2,9 +2,15 @@ import { GroupList } from "../groups";
 import { OrganizationList } from "../organizations";
 import { VenueList } from "../venues";
 import CalendarEvents from "./CalendarEvents";
+import { hasCalendarFeed } from "./getEvents";
 
-const allOrganizations = [...OrganizationList, ...VenueList, ...GroupList].filter(
-  (s, i, arr) => arr.findIndex((x) => x.name === s.name) === i,
+const allOrganizations = [
+  ...OrganizationList,
+  ...VenueList,
+  ...GroupList,
+].filter(
+  (s, i, arr) =>
+    hasCalendarFeed(s) && arr.findIndex((x) => x.name === s.name) === i,
 );
 
 const Calendars = () => (

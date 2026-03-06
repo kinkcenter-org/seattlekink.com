@@ -14,4 +14,5 @@ export default {
   image,
   socials: ["https://www.instagram.com/paneros_events"],
   website: "https://subspaceseattle.com/",
+  calendarId: "ads3vlnusqol5v5gcj72pattug@group.calendar.google.com",
 } satisfies Venue;
