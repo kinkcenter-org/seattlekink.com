@@ -4,11 +4,11 @@ import image from "./logo.avif";
 export default {
   name: "Sanctum Seattle",
   description: [
-    "Sanctum, founded with the vision of creating inclusive social, and educational events, aims to provide opportunities for personal growth and community building in a risk-aware and consent-forward environment",
-    "We are dedicated to establishing consistent social gatherings in the Greater Seattle Area, offering a variety of themed events to promote inclusivity and community engagement.",
+    "Sanctum Seattle, founded with the vision of creating inclusive social, and educational events, aims to provide opportunities for personal growth and community building in a risk-aware and consent-forward environment",
+    "Sanctum Seattle is dedicated to establishing consistent social gatherings in the Greater Seattle Area, offering a variety of themed events to promote inclusivity and community engagement.",
   ],
   comments: [
-    "Sanctum runs play parties almost every weekend, and multiple socials throughout every week",
+    "Sanctum Seattle hosts play parties nearly every weekend and multiple socials throughout each week.",
   ],
   image,
   socials: [

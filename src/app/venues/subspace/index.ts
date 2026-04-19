@@ -4,12 +4,12 @@ import image from "./logo.png";
 export default {
   name: "SubSpace",
   description: [
-    "We are a dungeon/studio play space in South Seattle",
-    "We are available for private rentals and event rentals",
-    "We are a non-discriminatory, all-inclusive membership organization. Whatever your kink or orientation is, you are welcome at SubSpace. We host about 200 events/year",
+    "SubSpace is a dungeon and studio play space in South Seattle available for private and event rentals.",
+    "SubSpace is a non-discriminatory, all-inclusive membership organization open to all kinks and orientations.",
+    "SubSpace hosts approximately 200 events per year.",
   ],
   comments: [
-    "SubSpace hosts routine workshops, socials, and play parties at their venue in Tukwila",
+    "SubSpace hosts routine workshops, socials, and play parties at the SubSpace venue in Tukwila.",
   ],
   image,
   socials: [

@@ -4,11 +4,11 @@ import image from "./magpie.png";
 export default {
   name: "Magpie Kink",
   description: [
-    "Magpie Kink Education is a kink educators organization in Seattle Washington",
+    "Magpie Kink Education is a kink education organization based in Seattle, Washington.",
   ],
   comments: [
-    "Mz. Magpie teaches: Bondage, Negotiation, Sex toys, Open relationships, Rough body play and trampling",
-    "There are other educators in this organization, see the website for more info",
+    "Mz. Magpie teaches bondage, negotiation, sex toys, open relationships, rough body play, and trampling.",
+    "Magpie Kink Education includes additional educators — see the Magpie Kink website for the full roster.",
   ],
   image,
   website: "https://magpiekink.com/",
