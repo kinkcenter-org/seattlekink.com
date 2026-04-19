@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { VenueComponent, VenueList } from ".";
 
 import "./venue.css";
+
+export const metadata: Metadata = {
+  title: "Kink Venues in Seattle",
+  description:
+    "A directory of kink and sex-positive venues in Seattle and the greater Seattle area, including Kink Center, SubSpace, and Gallery Erato.",
+};
 
 const Venues = () => (
   <main className="flex flex-col gap-8 items-center place-items-center text-center">

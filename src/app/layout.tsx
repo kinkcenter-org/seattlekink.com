@@ -15,8 +15,12 @@ const fontPoppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Seattle Kink",
-  description: "A high-level view of Seattle Kink",
+  title: {
+    default: "SeattleKink.com",
+    template: "%s | SeattleKink.com",
+  },
+  description:
+    "SeattleKink.com is a directory of Seattle kink venues, organizations, groups, and event calendars.",
 };
 
 export default function RootLayout({

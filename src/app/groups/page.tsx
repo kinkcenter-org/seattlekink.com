@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { VenueComponent } from "../venues";
 import { GroupList } from ".";
 import "../venues/venue.css";
+
+export const metadata: Metadata = {
+  title: "Kink Groups in Seattle",
+  description:
+    "Seattle kink groups that organize socials, munches, and community events.",
+};
 
 const Groups = () => (
   <main className="flex flex-col gap-8 items-center place-items-center text-center">

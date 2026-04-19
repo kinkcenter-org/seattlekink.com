@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import LinkButton from "../components/linkButton";
+
+export const metadata: Metadata = {
+  title: "Seattle Kink — Venues, Organizations & Events",
+  description:
+    "SeattleKink.com provides a high-level orientation to Seattle's kink scene, including venues, organizations, groups, and calendars.",
+};
 
 export default function Home() {
   return (

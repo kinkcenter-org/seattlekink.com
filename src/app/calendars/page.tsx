@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import { GroupList } from "../groups";
 import { OrganizationList } from "../organizations";
 import { VenueList } from "../venues";
 import CalendarEvents from "./CalendarEvents";
 import { hasCalendarFeed } from "./getEvents";
+
+export const metadata: Metadata = {
+  title: "Seattle Kink Event Calendars",
+  description:
+    "Event calendars for Seattle kink organizations and venues, including Kink Center, Gallery Erato, and CSPC.",
+};
 
 const allOrganizations = [
   ...OrganizationList,
