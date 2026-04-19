@@ -13,6 +13,7 @@ export default {
   ],
   image,
   socials: ["https://www.instagram.com/paneros_events"],
+  address: "309 1st Ave S, Seattle, WA 98104",
   website: "https://www.pan-eros.org/",
   calendarId: "ads3vlnusqol5v5gcj72pattug@group.calendar.google.com",
 } satisfies Venue;

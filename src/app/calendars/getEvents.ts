@@ -7,7 +7,8 @@ export type CalendarEvent = {
   location?: string;
   start: Date;
   end: Date;
-  htmlLink?: string;
+  calendarLink?: string;
+  eventUrl?: string;
 };
 
 // --- Google Calendar ---
@@ -18,6 +19,7 @@ type GoogleCalendarEvent = {
   description?: string;
   location?: string;
   htmlLink?: string;
+  source?: { url?: string };
   start?: { dateTime?: string; date?: string };
   end?: { dateTime?: string; date?: string };
 };
@@ -67,7 +69,8 @@ async function getEventsFromGoogleCalendar(
     location: item.location,
     start: parseGoogleDate(item.start),
     end: parseGoogleDate(item.end),
-    htmlLink: item.htmlLink,
+    calendarLink: item.htmlLink,
+    eventUrl: item.source?.url,
   }));
 }
 
@@ -112,7 +115,7 @@ async function getEventsFromTicketTailor(
       location: item.venue?.name,
       start: new Date(item.start?.iso ?? ""),
       end: new Date(item.end?.iso ?? ""),
-      htmlLink: item.checkout_url,
+      eventUrl: item.checkout_url,
     }));
 }
 

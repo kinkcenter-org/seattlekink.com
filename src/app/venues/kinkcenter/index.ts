@@ -21,6 +21,7 @@ export default {
     "https://bsky.app/profile/kinkcenter.org",
     "https://discord.gg/5HYYjYVNBF",
   ],
+  address: "814 E Pike St, Seattle, WA 98112",
   website: "https://kinkcenter.org/",
   calendarId: "3cfrm8nsdk41bt09fvkrll5cg4cc6baq@import.calendar.google.com",
 } satisfies Venue;

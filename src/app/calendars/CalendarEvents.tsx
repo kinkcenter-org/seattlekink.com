@@ -146,9 +146,18 @@ function EventCard({ event }: { event: SourcedEvent }) {
         </div>
         <div className="flex-1 min-w-0">
           <div className="font-medium">
-            {event.htmlLink ? (
+            {event.eventUrl && !event.calendarLink ? (
               <a
-                href={event.htmlLink}
+                href={event.eventUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                {event.title}
+              </a>
+            ) : !event.eventUrl && event.calendarLink ? (
+              <a
+                href={event.calendarLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
@@ -159,6 +168,26 @@ function EventCard({ event }: { event: SourcedEvent }) {
               event.title
             )}
           </div>
+          {event.eventUrl && event.calendarLink && (
+            <div className="flex gap-3 mt-1 text-xs">
+              <a
+                href={event.eventUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground/60 hover:text-foreground hover:underline"
+              >
+                Event page
+              </a>
+              <a
+                href={event.calendarLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground/60 hover:text-foreground hover:underline"
+              >
+                Add to calendar
+              </a>
+            </div>
+          )}
           {event.location && (
             <div className="text-sm text-foreground/60 mt-1">
               {event.location}
@@ -201,8 +230,9 @@ export default function CalendarEvents({
       getEventsFromOrganization(org, apiKey ?? undefined)
         .then((orgEvents) => {
           if (cancelled) return;
-          const sourced = orgEvents.map((e) => ({
+          const sourced = orgEvents.map(({ location, ...e }) => ({
             ...e,
+            location: location ?? org.address,
             sourceName: org.name,
             sourceImage: org.image,
             sourceImageClassName: org.imageClassName as string | undefined,
