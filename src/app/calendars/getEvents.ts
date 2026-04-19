@@ -53,7 +53,10 @@ async function getEventsFromGoogleCalendar(
   const data: GoogleCalendarResponse = await res.json();
 
   if (data.error) {
-    console.error(`Google Calendar error for ${calendarId}:`, data.error.message);
+    console.error(
+      `Google Calendar error for ${calendarId}:`,
+      data.error.message,
+    );
     return [];
   }
 

@@ -51,10 +51,15 @@ function dateKey(date: Date): string {
 // --- Status indicator ---
 
 function StatusIcon({ status }: { status: OrgStatus }) {
-  const base = "inline-flex items-center justify-center w-4 h-4 text-sm leading-none";
+  const base =
+    "inline-flex items-center justify-center w-4 h-4 text-sm leading-none";
   switch (status) {
     case "unsupported":
-      return <span className={`${base} text-red-500`} title="No supported feed">&#x2717;</span>;
+      return (
+        <span className={`${base} text-red-500`} title="No supported feed">
+          &#x2717;
+        </span>
+      );
     case "loading":
       return (
         <span
@@ -63,9 +68,17 @@ function StatusIcon({ status }: { status: OrgStatus }) {
         />
       );
     case "done":
-      return <span className={`${base} text-green-500`} title="Loaded">&#x2713;</span>;
+      return (
+        <span className={`${base} text-green-500`} title="Loaded">
+          &#x2713;
+        </span>
+      );
     case "error":
-      return <span className={`${base} text-red-500`} title="Failed to load">&#x2717;</span>;
+      return (
+        <span className={`${base} text-red-500`} title="Failed to load">
+          &#x2717;
+        </span>
+      );
   }
 }
 
@@ -103,7 +116,9 @@ function SourceStatusBar({
 function EventCard({ event }: { event: SourcedEvent }) {
   const isAllDay = event.start.getHours() === 0 && event.end.getHours() === 0;
 
-  const timeLabel = isAllDay ? "All day" : formatTimeRange(event.start, event.end);
+  const timeLabel = isAllDay
+    ? "All day"
+    : formatTimeRange(event.start, event.end);
 
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 p-3 rounded-lg border border-foreground/10 text-left">
