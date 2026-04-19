@@ -145,49 +145,7 @@ function EventCard({ event }: { event: SourcedEvent }) {
           {timeLabel}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="font-medium">
-            {event.eventUrl && !event.calendarLink ? (
-              <a
-                href={event.eventUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline"
-              >
-                {event.title}
-              </a>
-            ) : !event.eventUrl && event.calendarLink ? (
-              <a
-                href={event.calendarLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline"
-              >
-                {event.title}
-              </a>
-            ) : (
-              event.title
-            )}
-          </div>
-          {event.eventUrl && event.calendarLink && (
-            <div className="flex gap-3 mt-1 text-xs">
-              <a
-                href={event.eventUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground/60 hover:text-foreground hover:underline"
-              >
-                Event page
-              </a>
-              <a
-                href={event.calendarLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground/60 hover:text-foreground hover:underline"
-              >
-                Add to calendar
-              </a>
-            </div>
-          )}
+          <div className="font-medium">{event.title}</div>
           {event.location && (
             <div className="text-sm text-foreground/60 mt-1">
               {event.location}
@@ -196,6 +154,30 @@ function EventCard({ event }: { event: SourcedEvent }) {
           <div className="text-xs text-foreground/40 mt-1">
             {event.sourceName}
           </div>
+          {(event.eventUrl || event.calendarLink) && (
+            <div className="flex gap-2 mt-3">
+              {event.eventUrl && (
+                <a
+                  href={event.eventUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs px-2.5 py-1 rounded border border-foreground/20 text-foreground/70 hover:text-foreground hover:border-foreground/40 transition-colors"
+                >
+                  Event page
+                </a>
+              )}
+              {event.calendarLink && (
+                <a
+                  href={event.calendarLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs px-2.5 py-1 rounded border border-foreground/20 text-foreground/70 hover:text-foreground hover:border-foreground/40 transition-colors"
+                >
+                  Add to calendar
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

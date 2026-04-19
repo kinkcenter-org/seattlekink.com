@@ -19,7 +19,6 @@ type GoogleCalendarEvent = {
   description?: string;
   location?: string;
   htmlLink?: string;
-  source?: { url?: string };
   start?: { dateTime?: string; date?: string };
   end?: { dateTime?: string; date?: string };
 };
@@ -28,6 +27,14 @@ type GoogleCalendarResponse = {
   items?: GoogleCalendarEvent[];
   error?: { message: string };
 };
+
+function extractUrlFromDescription(description?: string): string | undefined {
+  if (!description) return undefined;
+  const hrefMatch = description.match(/href="(https?:\/\/[^"]+)"/);
+  if (hrefMatch) return hrefMatch[1];
+  const plainMatch = description.match(/https?:\/\/\S+/);
+  return plainMatch?.[0];
+}
 
 function parseGoogleDate(dt?: { dateTime?: string; date?: string }): Date {
   if (!dt) return new Date();
@@ -70,7 +77,7 @@ async function getEventsFromGoogleCalendar(
     start: parseGoogleDate(item.start),
     end: parseGoogleDate(item.end),
     calendarLink: item.htmlLink,
-    eventUrl: item.source?.url,
+    eventUrl: extractUrlFromDescription(item.description),
   }));
 }
 
