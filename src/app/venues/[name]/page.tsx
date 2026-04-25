@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { VenueList } from "..";
+import { VenueComponent, VenueList } from "..";
 
 export type Props = {
   params: Promise<{ name: string }>;
@@ -25,7 +25,11 @@ const VenuePage = async (props: Props) => {
     (venue) => venue.name.toLowerCase().replaceAll(" ", "-") === params.name,
   );
   if (!venue) return null;
-  return <p>{venue.name}</p>;
+  return (
+    <main className="flex flex-col gap-8 items-center w-full max-w-2xl">
+      <VenueComponent {...venue} />
+    </main>
+  );
 };
 
 export default VenuePage;

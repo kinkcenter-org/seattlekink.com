@@ -20,4 +20,15 @@ export default {
   ],
   website: "https://thecspc.org/",
   calendarId: "gn3dgg37318fhu7o2llldofefk@group.calendar.google.com",
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Center for Sex Positive Culture",
+    alternateName: "CSPC",
+    url: "https://thecspc.org/",
+    sameAs: [
+      "https://www.instagram.com/the.cspc/",
+      "https://www.reddit.com/r/CSPC_Seattle/",
+    ],
+  },
 } satisfies Organization;

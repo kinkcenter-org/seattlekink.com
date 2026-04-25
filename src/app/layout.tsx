@@ -2,6 +2,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import HomeIcon from "@mui/icons-material/Home";
 
 import type { Metadata } from "next";
+import { JsonLd } from "@/src/components/JsonLd";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
 
@@ -30,6 +31,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "SeattleKink.com",
+            url: "https://seattlekink.com",
+            description:
+              "A directory of Seattle kink venues, organizations, groups, and event calendars.",
+          }}
+        />
+      </head>
       <body
         className={`${fontPoppins.variable} font-sans antialiased h-screen flex flex-col gap-2`}
       >

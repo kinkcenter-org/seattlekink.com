@@ -19,4 +19,21 @@ export default {
     "https://www.instagram.com/subspaceseattle/",
   ],
   website: "https://subspaceseattle.com/",
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    name: "SubSpace",
+    url: "https://subspaceseattle.com/",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Tukwila",
+      addressRegion: "WA",
+      addressCountry: "US",
+    },
+    sameAs: [
+      "https://fetlife.com/SubSpaceSeattle",
+      "https://x.com/SubSpaceNW",
+      "https://www.instagram.com/subspaceseattle/",
+    ],
+  },
 } satisfies Venue;

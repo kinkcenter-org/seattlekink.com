@@ -1,5 +1,6 @@
 import Image from "next/image";
 import LinkButton from "@/src/components/linkButton";
+import { JsonLd } from "@/src/components/JsonLd";
 import SocialsButton from "@/src/components/socialsButton";
 import galleryErato from "./gallery-erato";
 import kinkcenter from "./kinkcenter";
@@ -15,6 +16,7 @@ export const VenueComponent = ({
   imageClassName,
   website,
   socials,
+  schema,
 }: Venue) => {
   return (
     <div
@@ -53,6 +55,7 @@ export const VenueComponent = ({
           {socials?.length ? <SocialsButton socials={socials} /> : null}
         </div>
       ) : null}
+      {schema ? <JsonLd data={schema} /> : null}
     </div>
   );
 };

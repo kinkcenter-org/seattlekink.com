@@ -12,4 +12,5 @@ export type Organization = {
   address?: string;
   calendarId?: string;
   ticketTailorFeedUrl?: string;
+  schema?: Record<string, unknown>;
 };

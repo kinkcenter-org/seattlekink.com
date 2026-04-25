@@ -12,4 +12,10 @@ export default {
   ],
   image,
   website: "https://magpiekink.com/",
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: "Magpie Kink Education",
+    url: "https://magpiekink.com/",
+  },
 } satisfies Organization;

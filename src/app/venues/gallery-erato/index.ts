@@ -16,4 +16,19 @@ export default {
   address: "309 1st Ave S, Seattle, WA 98104",
   website: "https://www.pan-eros.org/",
   calendarId: "ads3vlnusqol5v5gcj72pattug@group.calendar.google.com",
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    name: "Gallery Erato",
+    url: "https://www.pan-eros.org/",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "309 1st Ave S",
+      addressLocality: "Seattle",
+      addressRegion: "WA",
+      postalCode: "98104",
+      addressCountry: "US",
+    },
+    sameAs: ["https://www.instagram.com/paneros_events"],
+  },
 } satisfies Venue;

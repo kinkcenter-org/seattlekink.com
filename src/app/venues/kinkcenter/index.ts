@@ -24,4 +24,23 @@ export default {
   address: "814 E Pike St, Seattle, WA 98112",
   website: "https://kinkcenter.org/",
   calendarId: "3cfrm8nsdk41bt09fvkrll5cg4cc6baq@import.calendar.google.com",
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    name: "Kink Center",
+    url: "https://kinkcenter.org/",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "814 E Pike St",
+      addressLocality: "Seattle",
+      addressRegion: "WA",
+      postalCode: "98122",
+      addressCountry: "US",
+    },
+    sameAs: [
+      "https://instagram.com/kinkcenter",
+      "https://www.threads.com/@kinkcenter",
+      "https://bsky.app/profile/kinkcenter.org",
+    ],
+  },
 } satisfies Venue;
