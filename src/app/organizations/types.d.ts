@@ -1,5 +1,6 @@
 import type { StaticImageData } from "next/image";
 import type { HTMLAttributes, ImgHTMLAttributes } from "react";
+import type { GoogleCalendarEvent } from "../calendars/getEvents";
 
 export type Organization = {
   name: string;
@@ -11,6 +12,7 @@ export type Organization = {
   socials?: string[];
   address?: string;
   calendarId?: string;
+  calendarEventToUrl?: Partial<Record<keyof GoogleCalendarEvent, string>>;
   ticketTailorFeedUrl?: string;
   schema?: Record<string, unknown>;
 };

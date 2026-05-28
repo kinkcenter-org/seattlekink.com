@@ -1,6 +1,6 @@
 import Image from "next/image";
-import LinkButton from "@/src/components/linkButton";
 import { JsonLd } from "@/src/components/JsonLd";
+import LinkButton from "@/src/components/linkButton";
 import SocialsButton from "@/src/components/socialsButton";
 import galleryErato from "./gallery-erato";
 import kinkcenter from "./kinkcenter";

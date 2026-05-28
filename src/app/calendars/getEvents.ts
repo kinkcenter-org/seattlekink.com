@@ -13,14 +13,42 @@ export type CalendarEvent = {
 
 // --- Google Calendar ---
 
-type GoogleCalendarEvent = {
+type GoogleCalendarDateTime = {
+  date?: string;
+  dateTime?: string;
+  timeZone?: string;
+};
+
+type GoogleCalendarPerson = {
+  email?: string;
+  displayName?: string;
+  self?: boolean;
+};
+
+export type GoogleCalendarEvent = {
+  kind?: string;
+  etag?: string;
   id: string;
+  status?: string;
+  htmlLink?: string;
+  created?: string;
+  updated?: string;
   summary?: string;
   description?: string;
   location?: string;
-  htmlLink?: string;
-  start?: { dateTime?: string; date?: string };
-  end?: { dateTime?: string; date?: string };
+  creator?: GoogleCalendarPerson;
+  organizer?: GoogleCalendarPerson;
+  start?: GoogleCalendarDateTime;
+  end?: GoogleCalendarDateTime;
+  recurringEventId?: string;
+  originalStartTime?: GoogleCalendarDateTime;
+  iCalUID?: string;
+  sequence?: number;
+  eventType?: string;
+  extendedProperties?: {
+    private?: Record<string, string>;
+    shared?: Record<string, string>;
+  };
 };
 
 type GoogleCalendarResponse = {
@@ -36,7 +64,7 @@ function extractUrlFromDescription(description?: string): string | undefined {
   return plainMatch?.[0];
 }
 
-function parseGoogleDate(dt?: { dateTime?: string; date?: string }): Date {
+function parseGoogleDate(dt?: GoogleCalendarDateTime): Date {
   if (!dt) return new Date();
   return new Date(dt.dateTime ?? dt.date ?? "");
 }
@@ -44,6 +72,7 @@ function parseGoogleDate(dt?: { dateTime?: string; date?: string }): Date {
 async function getEventsFromGoogleCalendar(
   calendarId: string,
   apiKey: string,
+  calendarEventToUrl?: Organization["calendarEventToUrl"],
 ): Promise<CalendarEvent[]> {
   const timeMin = new Date().toISOString();
   const timeMax = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
@@ -69,16 +98,29 @@ async function getEventsFromGoogleCalendar(
     return [];
   }
 
-  return (data.items ?? []).map((item) => ({
-    id: item.id,
-    title: item.summary ?? "Untitled Event",
-    description: item.description,
-    location: item.location,
-    start: parseGoogleDate(item.start),
-    end: parseGoogleDate(item.end),
-    calendarLink: item.htmlLink,
-    eventUrl: extractUrlFromDescription(item.description),
-  }));
+  return (data.items ?? []).map((item) => {
+    let eventUrl = extractUrlFromDescription(item.description);
+    if (calendarEventToUrl && Object.keys(calendarEventToUrl).length) {
+      const keyOfItem = Object.keys(calendarEventToUrl)[0] as keyof typeof item;
+      const urlPattern = Object.values(calendarEventToUrl)[0];
+      eventUrl = urlPattern.replace(
+        `{${keyOfItem}}`,
+        // @ts-expect-error -- This is always true
+        item[keyOfItem] ?? "",
+      );
+    }
+
+    return {
+      id: item.id,
+      title: item.summary ?? "Untitled Event",
+      description: item.description,
+      location: item.location,
+      start: parseGoogleDate(item.start),
+      end: parseGoogleDate(item.end),
+      calendarLink: item.htmlLink,
+      eventUrl,
+    };
+  });
 }
 
 // --- Ticket Tailor ---
@@ -137,7 +179,11 @@ export async function getEventsFromOrganization(
   googleApiKey?: string,
 ): Promise<CalendarEvent[]> {
   if (org.calendarId && googleApiKey) {
-    return getEventsFromGoogleCalendar(org.calendarId, googleApiKey);
+    return getEventsFromGoogleCalendar(
+      org.calendarId,
+      googleApiKey,
+      org.calendarEventToUrl,
+    );
   }
   if (org.ticketTailorFeedUrl) {
     return getEventsFromTicketTailor(org.ticketTailorFeedUrl);

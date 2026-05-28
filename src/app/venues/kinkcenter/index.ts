@@ -1,3 +1,4 @@
+import type { GoogleCalendarEvent } from "../../calendars/getEvents";
 import type { Venue } from "../types";
 import image from "./logo.png";
 
@@ -24,6 +25,9 @@ export default {
   address: "814 E Pike St, Seattle, WA 98112",
   website: "https://kinkcenter.org/",
   calendarId: "3cfrm8nsdk41bt09fvkrll5cg4cc6baq@import.calendar.google.com",
+  calendarEventToUrl: {
+    iCalUID: `https://kinkcenter.org/calendar/{iCalUID}`,
+  },
   schema: {
     "@context": "https://schema.org",
     "@type": "EventVenue",

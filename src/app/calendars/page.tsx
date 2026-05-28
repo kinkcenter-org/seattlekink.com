@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { GroupList } from "../groups";
-import { OrganizationList } from "../organizations";
-import { VenueList } from "../venues";
+import cspc from "../organizations/cspc";
+import kinkcenter from "../venues/kinkcenter";
 import CalendarEvents from "./CalendarEvents";
 import { hasCalendarFeed } from "./getEvents";
 
@@ -11,11 +10,7 @@ export const metadata: Metadata = {
     "Event calendars for Seattle kink organizations and venues, including Kink Center, Gallery Erato, and CSPC.",
 };
 
-const allOrganizations = [
-  ...OrganizationList,
-  ...VenueList,
-  ...GroupList,
-].filter(
+const allOrganizations = [cspc, kinkcenter].filter(
   (s, i, arr) =>
     hasCalendarFeed(s) && arr.findIndex((x) => x.name === s.name) === i,
 );
