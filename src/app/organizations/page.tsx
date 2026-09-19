@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import HalftoneOverlay from "@/src/components/HalftoneOverlay";
+import { PageHead } from "@/src/components/PageHead";
 import { VenueComponent } from "../venues";
 import { OrganizationList } from ".";
-import "../venues/venue.css";
 
 export const metadata: Metadata = {
   title: "Kink Organizations in Seattle",
@@ -10,17 +11,21 @@ export const metadata: Metadata = {
 };
 
 const Organizations = () => (
-  <main className="flex flex-col gap-8 items-center place-items-center text-center">
-    <p className="text-xl pb-2 w-full">Organizations</p>
-    <p className="text-lg mb-4">
-      Organizations are businesses that operate within a venue
-    </p>
-    <p className="text-lg mb-4">
-      They might host events all over Seattle, or they might stay in one
-      preferred venue
-    </p>
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
-      {OrganizationList.map(VenueComponent)}
+  <main className="flex-1 flex flex-col relative">
+    <HalftoneOverlay />
+    <div className="relative">
+      <PageHead label="Directory" title="Organizations">
+        <p>Organizations are businesses that operate within a venue</p>
+        <p>
+          They might host events all over Seattle, or they might stay in one
+          preferred venue
+        </p>
+      </PageHead>
+      <div>
+        {OrganizationList.map((org) => (
+          <VenueComponent key={org.name} {...org} category="Organization" />
+        ))}
+      </div>
     </div>
   </main>
 );

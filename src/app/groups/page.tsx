@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import HalftoneOverlay from "@/src/components/HalftoneOverlay";
+import { PageHead } from "@/src/components/PageHead";
 import { VenueComponent } from "../venues";
 import { GroupList } from ".";
-import "../venues/venue.css";
 
 export const metadata: Metadata = {
   title: "Kink Groups in Seattle",
@@ -10,17 +11,21 @@ export const metadata: Metadata = {
 };
 
 const Groups = () => (
-  <main className="flex flex-col gap-8 items-center place-items-center text-center">
-    <p className="text-xl border-b pb-2 w-full">Groups</p>
-    <p className="text-lg mb-2">
-      Groups are usually a set of people who organize and run events
-    </p>
-    <p className="text-lg mb-2">
-      You'll usually see Socials, Munches, and online meetings from them
-    </p>
-    <p className="text-lg mb-2">Some groups are purely online communities</p>
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
-      {GroupList.map(VenueComponent)}
+  <main className="flex-1 flex flex-col relative">
+    <HalftoneOverlay />
+    <div className="relative">
+      <PageHead label="Directory" title="Groups">
+        <p>Groups are usually a set of people who organize and run events</p>
+        <p>
+          You'll usually see Socials, Munches, and online meetings from them
+        </p>
+        <p>Some groups are purely online communities</p>
+      </PageHead>
+      <div>
+        {GroupList.map((group) => (
+          <VenueComponent key={group.name} {...group} category="Group" />
+        ))}
+      </div>
     </div>
   </main>
 );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { VenueComponent, VenueList } from "..";
 
 export type Props = {
@@ -26,8 +27,14 @@ const VenuePage = async (props: Props) => {
   );
   if (!venue) return null;
   return (
-    <main className="flex flex-col gap-8 items-center w-full max-w-2xl">
-      <VenueComponent {...venue} />
+    <main className="flex-1 flex flex-col">
+      <Link
+        href="/venues"
+        className="px-5 pt-5 text-sm tracking-widest text-grey-mid hover:text-riso"
+      >
+        &larr; ALL VENUES
+      </Link>
+      <VenueComponent {...venue} category="Venue" />
     </main>
   );
 };

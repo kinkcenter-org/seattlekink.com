@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import HalftoneOverlay from "@/src/components/HalftoneOverlay";
+import { PageHead } from "@/src/components/PageHead";
 import cspc from "../organizations/cspc";
 import kinkcenter from "../venues/kinkcenter";
 import CalendarEvents from "./CalendarEvents";
@@ -16,9 +18,14 @@ const allOrganizations = [cspc, kinkcenter].filter(
 );
 
 const Calendars = () => (
-  <main className="flex flex-col gap-8 items-center place-items-center text-center">
-    <p className="text-xl border-b pb-2 w-full">Calendars</p>
-    <CalendarEvents organizations={allOrganizations} />
+  <main className="flex-1 flex flex-col relative">
+    <HalftoneOverlay />
+    <div className="relative">
+      <PageHead label="Live feed" title="Calendars" />
+      <div className="px-5 py-5">
+        <CalendarEvents organizations={allOrganizations} />
+      </div>
+    </div>
   </main>
 );
 
