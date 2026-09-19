@@ -38,10 +38,7 @@ export const VenueComponent = ({
   schema,
 }: Venue & { category?: string }) => {
   return (
-    <div
-      key={name}
-      className="px-5 py-6 border-b border-dashed border-riso/40"
-    >
+    <div key={name} className="px-5 py-6 border-b border-dashed border-riso/40">
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="text-xs tracking-[0.16em] text-riso uppercase">
           {category ?? "Listing"}

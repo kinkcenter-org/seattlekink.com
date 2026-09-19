@@ -145,13 +145,9 @@ function EventCard({ event }: { event: SourcedEvent }) {
           {timeLabel}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="font-display text-base text-paper">
-            {event.title}
-          </div>
+          <div className="font-display text-base text-paper">{event.title}</div>
           {event.location && (
-            <div className="text-sm text-grey-mid mt-1">
-              {event.location}
-            </div>
+            <div className="text-sm text-grey-mid mt-1">{event.location}</div>
           )}
           <div className="text-xs text-grey-dim mt-1 uppercase tracking-wide">
             {event.sourceName}

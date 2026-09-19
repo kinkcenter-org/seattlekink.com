@@ -53,9 +53,9 @@ describe("Google Calendar endpoints reachable from seattlekink.com", () => {
         });
         const data = await res.json();
         expect(data.error).toBeUndefined();
-        expect(
-          data.items === undefined || Array.isArray(data.items),
-        ).toBe(true);
+        expect(data.items === undefined || Array.isArray(data.items)).toBe(
+          true,
+        );
       },
       { timeout: 10_000 },
     );

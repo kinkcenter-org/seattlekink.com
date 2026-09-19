@@ -31,8 +31,8 @@ export default function Home() {
           orientation.
         </p>
         <p className="text-[15px] leading-relaxed text-[#e2e2e2]">
-          This website will also provide some history and helpful tips that
-          are nuanced wisdom about certain orgs and venues.
+          This website will also provide some history and helpful tips that are
+          nuanced wisdom about certain orgs and venues.
         </p>
         <p className="text-xs tracking-[0.16em] text-riso uppercase mt-4">
           Get started:

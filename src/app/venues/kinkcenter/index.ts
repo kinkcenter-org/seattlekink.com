@@ -1,4 +1,3 @@
-import type { GoogleCalendarEvent } from "../../calendars/getEvents";
 import type { Venue } from "../types";
 import image from "./logo.png";
 
