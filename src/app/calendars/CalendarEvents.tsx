@@ -56,26 +56,26 @@ function StatusIcon({ status }: { status: OrgStatus }) {
   switch (status) {
     case "unsupported":
       return (
-        <span className={`${base} text-red-500`} title="No supported feed">
+        <span className={`${base} text-riso`} title="No supported feed">
           &#x2717;
         </span>
       );
     case "loading":
       return (
         <span
-          className={`${base} border-2 border-foreground/30 border-t-foreground rounded-full animate-spin`}
+          className={`${base} border-2 border-grey-box border-t-riso rounded-full animate-spin`}
           title="Loading"
         />
       );
     case "done":
       return (
-        <span className={`${base} text-green-500`} title="Loaded">
+        <span className={`${base} text-riso`} title="Loaded">
           &#x2713;
         </span>
       );
     case "error":
       return (
-        <span className={`${base} text-red-500`} title="Failed to load">
+        <span className={`${base} text-riso`} title="Failed to load">
           &#x2717;
         </span>
       );
@@ -90,20 +90,20 @@ function SourceStatusBar({
   statuses: Record<string, OrgStatus>;
 }) {
   return (
-    <div className="flex flex-wrap gap-3 w-full justify-center text-sm">
+    <div className="flex flex-wrap gap-2 w-full text-sm">
       {organizations.map((org) => (
         <div
           key={org.name}
-          className="flex items-center gap-1.5 px-2 py-1 rounded border border-foreground/10"
+          className="flex items-center gap-1.5 px-2 py-1 border border-grey-box"
         >
           {org.image ? (
             <Image
               src={org.image}
               alt={org.name}
-              className={`w-4 h-4 object-contain rounded ${org.imageClassName ?? ""}`}
+              className={`w-4 h-4 object-contain ${org.imageClassName ?? ""}`}
             />
           ) : null}
-          <span className="text-foreground/60">{org.name}</span>
+          <span className="text-grey-mid">{org.name}</span>
           <StatusIcon status={statuses[org.name] ?? "unsupported"} />
         </div>
       ))}
@@ -121,8 +121,8 @@ function EventCard({ event }: { event: SourcedEvent }) {
     : formatTimeRange(event.start, event.end);
 
   return (
-    <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 p-3 rounded-lg border border-foreground/10 text-left">
-      <div className="sm:hidden text-xs font-medium text-foreground/50 uppercase tracking-wide">
+    <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 py-4 border-b border-dashed border-riso/40 text-left">
+      <div className="sm:hidden text-xs font-bold text-riso uppercase tracking-widest">
         {timeLabel}
       </div>
       <div className="flex flex-row gap-3 sm:gap-4 items-center flex-1 min-w-0">
@@ -130,10 +130,10 @@ function EventCard({ event }: { event: SourcedEvent }) {
           <Image
             src={event.sourceImage}
             alt={event.sourceName}
-            className={`w-10 h-10 object-contain shrink-0 rounded ${event.sourceImageClassName ?? ""}`}
+            className={`w-10 h-10 object-contain shrink-0 ${event.sourceImageClassName ?? ""}`}
           />
         ) : (
-          <div className="w-10 h-10 shrink-0 rounded bg-foreground/10 flex items-center justify-center text-xs font-bold text-foreground/40">
+          <div className="w-10 h-10 shrink-0 border border-grey-box flex items-center justify-center text-xs font-bold text-grey-mid">
             {event.sourceName
               .split(" ")
               .map((word) => word?.at(0))
@@ -141,27 +141,29 @@ function EventCard({ event }: { event: SourcedEvent }) {
               .slice(0, 4)}
           </div>
         )}
-        <div className="hidden sm:block sm:w-28 shrink-0 text-sm text-foreground/60">
+        <div className="hidden sm:block sm:w-28 shrink-0 text-sm text-grey-mid">
           {timeLabel}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="font-medium">{event.title}</div>
+          <div className="font-display text-base text-paper">
+            {event.title}
+          </div>
           {event.location && (
-            <div className="text-sm text-foreground/60 mt-1">
+            <div className="text-sm text-grey-mid mt-1">
               {event.location}
             </div>
           )}
-          <div className="text-xs text-foreground/40 mt-1">
+          <div className="text-xs text-grey-dim mt-1 uppercase tracking-wide">
             {event.sourceName}
           </div>
           {(event.eventUrl || event.calendarLink) && (
-            <div className="flex gap-2 mt-3">
+            <div className="flex gap-3 mt-3 flex-wrap">
               {event.eventUrl && (
                 <a
                   href={event.eventUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs px-2.5 py-1 rounded border border-foreground/20 text-foreground/70 hover:text-foreground hover:border-foreground/40 transition-colors"
+                  className="text-sm font-bold text-riso border-b-[1.5px] border-riso"
                 >
                   Event page
                 </a>
@@ -171,7 +173,7 @@ function EventCard({ event }: { event: SourcedEvent }) {
                   href={event.calendarLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs px-2.5 py-1 rounded border border-foreground/20 text-foreground/70 hover:text-foreground hover:border-foreground/40 transition-colors"
+                  className="text-sm text-grey-mid border-b border-grey-box hover:text-paper hover:border-paper"
                 >
                   Add to calendar
                 </a>
@@ -249,23 +251,23 @@ export default function CalendarEvents({
   }
 
   return (
-    <div className="flex flex-col gap-6 w-full">
+    <div className="flex flex-col gap-6 w-full text-left">
       <SourceStatusBar organizations={organizations} statuses={statuses} />
 
       {!allDone && events.length === 0 && (
-        <p className="text-foreground/60">Loading events...</p>
+        <p className="text-sm text-grey-mid">Loading events...</p>
       )}
 
       {allDone && events.length === 0 && (
-        <p className="text-foreground/60">No upcoming events found.</p>
+        <p className="text-sm text-grey-mid">No upcoming events found.</p>
       )}
 
       {Object.entries(grouped).map(([key, dayEvents]) => (
         <div key={key}>
-          <h2 className="text-lg font-medium mb-3 text-left border-b border-foreground/10 pb-1">
+          <h2 className="font-display text-base text-paper mb-1 pb-2 border-b-2 border-riso">
             {formatDateHeading(dayEvents[0].start)}
           </h2>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col">
             {dayEvents.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}

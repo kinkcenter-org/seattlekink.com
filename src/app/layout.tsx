@@ -1,18 +1,21 @@
-import GitHubIcon from "@mui/icons-material/GitHub";
-import HomeIcon from "@mui/icons-material/Home";
-
-import type { Metadata } from "next";
-import { JsonLd } from "@/src/components/JsonLd";
-import { Poppins } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Archivo_Black, Space_Mono } from "next/font/google";
 import Link from "next/link";
+import { JsonLd } from "@/src/components/JsonLd";
+import { TopBar } from "@/src/components/TopBar";
 
 import "./globals.css";
 
-const fontPoppins = Poppins({
-  style: "normal",
+const fontDisplay = Archivo_Black({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-poppins",
+  variable: "--font-archivo-black",
+});
+
+const fontMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-mono",
 });
 
 export const metadata: Metadata = {
@@ -22,6 +25,12 @@ export const metadata: Metadata = {
   },
   description:
     "SeattleKink.com is a directory of Seattle kink venues, organizations, groups, and event calendars.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0f0f0f",
 };
 
 export default function RootLayout({
@@ -44,38 +53,25 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fontPoppins.variable} font-sans antialiased h-screen flex flex-col gap-2`}
+        className={`${fontDisplay.variable} ${fontMono.variable} antialiased min-h-screen flex flex-col bg-ink text-paper`}
       >
-        <header className="w-2xl max-w-full place-self-center flex justify-center py-3">
-          <nav>
-            <Link href="/">
-              <HomeIcon />
-            </Link>
-            <Link href="/" className="grow w-full text-center">
-              <p className="text-2xl">SeattleKink.com</p>
-            </Link>
-            <Link
-              href="https://github.com/kinkcenter-org/seattlekink.com"
-              target="_blank"
-            >
-              <GitHubIcon />
-            </Link>
-          </nav>
-        </header>
-        <div className="grow flex flex-col items-center justify-items-center gap-16 font-sans overflow-scroll">
+        <TopBar />
+        <div className="flex-1 flex flex-col w-full max-w-2xl mx-auto">
           {children}
         </div>
-        <footer className="self-center justify-center text-center pb-1">
-          Disclosure: This webpage is owned by Raven Dubh, President of
-          KinkCenter.org.{" "}
-          <a
-            className="border-b border-dotted border-foreground/50 hover:border-solid inline"
-            href="https://github.com/kinkcenter-org/seattlekink.com"
-            target="_blank"
-            rel="noopener"
-          >
-            Support wanted
-          </a>
+        <footer className="border-t border-grey-line px-5 py-4 text-sm leading-relaxed text-grey-dim">
+          <div className="max-w-2xl mx-auto">
+            Disclosure: This webpage is owned by Raven Dubh, President of
+            KinkCenter.org.{" "}
+            <Link
+              className="underline decoration-dotted underline-offset-2 hover:text-paper"
+              href="https://github.com/kinkcenter-org/seattlekink.com"
+              target="_blank"
+              rel="noopener"
+            >
+              Support wanted
+            </Link>
+          </div>
         </footer>
       </body>
     </html>
