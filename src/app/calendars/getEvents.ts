@@ -91,11 +91,9 @@ async function getEventsFromGoogleCalendar(
   const data: GoogleCalendarResponse = await res.json();
 
   if (data.error) {
-    console.error(
-      `Google Calendar error for ${calendarId}:`,
-      data.error.message,
+    throw new Error(
+      `Google Calendar error for ${calendarId}: ${data.error.message}`,
     );
-    return [];
   }
 
   return (data.items ?? []).map((item) => {
@@ -262,7 +260,9 @@ export async function getEventsFromOrganization(
   org: Organization,
   googleApiKey?: string,
 ): Promise<CalendarEvent[]> {
-  if (org.calendarId && googleApiKey) {
+  if (org.calendarId) {
+    // Without this, a build missing the key shows every Google org as loaded with no events.
+    if (!googleApiKey) throw new Error("NEXT_PUBLIC_GOOGLE_API_KEY is not set");
     return getEventsFromGoogleCalendar(
       org.calendarId,
       googleApiKey,
