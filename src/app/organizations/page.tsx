@@ -7,7 +7,7 @@ import { OrganizationList } from ".";
 export const metadata: Metadata = {
   title: "Kink Organizations in Seattle",
   description:
-    "A directory of kink and sex-positive organizations in Seattle, including CSPC, Sanctum Seattle, Kink Center, Magpie Kink, and SubSpace.",
+    "A directory of kink and sex-positive organizations in Seattle, including CSPC, Sanctum Seattle, Kink Center, Magpie Kink, SubSpace, and Flower and Snake.",
 };
 
 const Organizations = () => (

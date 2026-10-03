@@ -1,3 +1,4 @@
+import flowerAndSnake from "../venues/flower-and-snake";
 import kinkcenter from "../venues/kinkcenter";
 import subspace from "../venues/subspace";
 import cspc from "./cspc";
@@ -9,4 +10,5 @@ export const OrganizationList: Organization[] = [
   subspace,
   kinkcenter,
   magpie,
+  flowerAndSnake,
 ];

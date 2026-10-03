@@ -14,5 +14,6 @@ export type Organization = {
   calendarId?: string;
   calendarEventToUrl?: Partial<Record<keyof GoogleCalendarEvent, string>>;
   ticketTailorFeedUrl?: string;
+  wixEvents?: { siteUrl: string; compId: string };
   schema?: Record<string, unknown>;
 };

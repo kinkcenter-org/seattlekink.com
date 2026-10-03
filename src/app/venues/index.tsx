@@ -1,10 +1,16 @@
 import Image from "next/image";
 import { JsonLd } from "@/src/components/JsonLd";
+import flowerAndSnake from "./flower-and-snake";
 import galleryErato from "./gallery-erato";
 import kinkcenter from "./kinkcenter";
 import subspace from "./subspace";
 import type { Venue } from "./types";
-export const VenueList: Venue[] = [galleryErato, subspace, kinkcenter];
+export const VenueList: Venue[] = [
+  galleryErato,
+  subspace,
+  kinkcenter,
+  flowerAndSnake,
+];
 
 const platformName = (url: string): string => {
   try {

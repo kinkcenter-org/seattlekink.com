@@ -168,10 +168,94 @@ async function getEventsFromTicketTailor(
     }));
 }
 
+// --- Wix Events ---
+
+// App ID of Wix Events, the same on every Wix site.
+const WIX_EVENTS_APP_ID = "140603ad-af8d-84a5-2c80-a0f60cb47351";
+
+type WixAccessTokens = {
+  apps?: Record<string, { instance?: string }>;
+};
+
+type WixEvent = {
+  id: string;
+  title?: string;
+  description?: string;
+  slug?: string;
+  location?: { address?: string };
+  scheduling?: {
+    config?: { scheduleTbd?: boolean; startDate?: string; endDate?: string };
+  };
+};
+
+type WixCalendarResponse = {
+  events?: WixEvent[];
+};
+
+async function getEventsFromWix({
+  siteUrl,
+  compId,
+}: NonNullable<Organization["wixEvents"]>): Promise<CalendarEvent[]> {
+  const now = new Date();
+  const max = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+  // The calendar endpoint rejects requests without the site's visitor token.
+  const tokenRes = await fetch(`${siteUrl}/_api/v1/access-tokens`);
+  const tokens: WixAccessTokens = await tokenRes.json();
+  const instance = tokens.apps?.[WIX_EVENTS_APP_ID]?.instance;
+  if (!instance) throw new Error(`No Wix Events token for ${siteUrl}`);
+
+  const params = new URLSearchParams({
+    referenceDate: now.toISOString(),
+    filter: "1",
+    byEventId: "false",
+    members: "true",
+    paidPlans: "true",
+    locale: "en",
+    showcase: "false",
+    filterType: "2",
+    sortOrder: "0",
+    multiDayExperimentEnabled: "true",
+    expandBounds: "true",
+    fetchBadges: "true",
+    draft: "false",
+    compId,
+    tz: "America/Los_Angeles",
+  });
+
+  const res = await fetch(
+    `${siteUrl}/_api/wix-one-events-server/web/calendar-events/viewer?${params}`,
+    { headers: { Authorization: instance } },
+  );
+  if (!res.ok)
+    throw new Error(`Wix Events error for ${siteUrl}: ${res.status}`);
+  const data: WixCalendarResponse = await res.json();
+
+  return (data.events ?? [])
+    .filter((item) => {
+      const config = item.scheduling?.config;
+      if (!config?.startDate || !config.endDate || config.scheduleTbd) {
+        return false;
+      }
+      return (
+        new Date(config.endDate) >= now && new Date(config.startDate) <= max
+      );
+    })
+    .map((item) => ({
+      id: item.id,
+      title: item.title ?? "Untitled Event",
+      description: item.description,
+      location: item.location?.address,
+      start: new Date(item.scheduling?.config?.startDate ?? ""),
+      end: new Date(item.scheduling?.config?.endDate ?? ""),
+      eventUrl: item.slug ? `${siteUrl}/event-details/${item.slug}` : siteUrl,
+    }));
+}
+
 // --- Main entry point ---
 
 export function hasCalendarFeed(org: Organization): boolean {
-  return !!(org.calendarId || org.ticketTailorFeedUrl);
+  return !!(org.calendarId || org.ticketTailorFeedUrl || org.wixEvents);
 }
 
 export async function getEventsFromOrganization(
@@ -187,6 +271,9 @@ export async function getEventsFromOrganization(
   }
   if (org.ticketTailorFeedUrl) {
     return getEventsFromTicketTailor(org.ticketTailorFeedUrl);
+  }
+  if (org.wixEvents) {
+    return getEventsFromWix(org.wixEvents);
   }
   return [];
 }

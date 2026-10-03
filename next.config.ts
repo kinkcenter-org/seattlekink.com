@@ -12,6 +12,7 @@ const cspOkList = [
   "https://fonts.gstatic.com",
   "https://www.googleapis.com",
   "https://calendar.apiboomtech.com",
+  "https://www.flowerandsnake.com",
 ];
 const cspHeader = `
   default-src 'self' blob: data: ${cspOkList.join(" ")};

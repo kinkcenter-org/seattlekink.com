@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import HalftoneOverlay from "@/src/components/HalftoneOverlay";
 import { PageHead } from "@/src/components/PageHead";
 import cspc from "../organizations/cspc";
+import flowerAndSnake from "../venues/flower-and-snake";
 import kinkcenter from "../venues/kinkcenter";
 import CalendarEvents from "./CalendarEvents";
 import { hasCalendarFeed } from "./getEvents";
@@ -9,10 +10,10 @@ import { hasCalendarFeed } from "./getEvents";
 export const metadata: Metadata = {
   title: "Seattle Kink Event Calendars",
   description:
-    "Event calendars for Seattle kink organizations and venues, including Kink Center, Gallery Erato, and CSPC.",
+    "Event calendars for Seattle kink organizations and venues, including Kink Center, Gallery Erato, CSPC, and Flower and Snake.",
 };
 
-const allOrganizations = [cspc, kinkcenter].filter(
+const allOrganizations = [cspc, kinkcenter, flowerAndSnake].filter(
   (s, i, arr) =>
     hasCalendarFeed(s) && arr.findIndex((x) => x.name === s.name) === i,
 );

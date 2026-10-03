@@ -29,6 +29,16 @@ describe("hasCalendarFeed", () => {
     ).toBe(true);
   });
 
+  test("returns true for an org with wixEvents", () => {
+    expect(
+      hasCalendarFeed({
+        name: "X",
+        description: "",
+        wixEvents: { siteUrl: "https://example.com", compId: "comp-abc" },
+      }),
+    ).toBe(true);
+  });
+
   test("returns false for an org with neither feed", () => {
     expect(hasCalendarFeed({ name: "X", description: "" })).toBe(false);
   });
